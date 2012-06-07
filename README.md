@@ -6,7 +6,7 @@ wm_basic_auth is a dead simple, flexible implementation of HTTP Basic authentica
 
 #### Add wm_basic_auth as a dependency in your rebar.config
 
-	{deps, [{wm_basic_auth, "*", {git, "git://github.com/b/basic_auth", "HEAD"}}]}.
+	{deps, [{wm_basic_auth, ".*", {git, "git://github.com/b/wm_basic_auth", "HEAD"}}]}.
 
 #### Implement your authorization function
 
