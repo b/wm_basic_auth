@@ -26,7 +26,9 @@ this specification:
 
 #### Enable TLS/SSL
 
-This step is optional, but strongly recommended.
+This step is optional, but strongly recommended.  The additional SSL configuration below is the minimal
+amount needed to get you going, though it does assume a self-signed certificate.  Great for testing,
+probably not what you want for production.
 
 	WebConfig = [
 	             {ip, Ip},
@@ -35,7 +37,8 @@ This step is optional, but strongly recommended.
 	             {dispatch, Dispatch},
 	             {ssl, true},
 				 {ssl_opts, [{keyfile, "priv/server.key"},
-							 {certfile, "priv/server.pem"}]}],
+							 {certfile, "priv/server.pem"},
+							 {cacertfile,"priv/server.pem"}]}],
 
 ### Example resource
 
