@@ -51,4 +51,4 @@ authentication easily using curl:
 
 ### Blame
 
-basic_auth is made by Benjamin Black and can be found at https://github.com/b/basic_auth.
+wm_basic_auth is made by Benjamin Black and can be found at https://github.com/b/wm_basic_auth.
