@@ -4,24 +4,29 @@ wm_basic_auth is a dead simple, flexible implementation of HTTP Basic authentica
 
 ### Using wm_basic_auth
 
---add dep to rebar.config
+#### Add wm_basic_auth as a dependency in your rebar.config
 
 	{deps, [{wm_basic_auth, "*", {git, "git://github.com/b/basic_auth", "HEAD"}}]}.
 
---implement your auth function
+#### Implement your authorization function
+
+Your authentication function may use whatever means you like to verify access, but must match
+this specification:
 
 	-spec my_auth_fun(Realm :: string(),
 	                  Username :: string(),
 	                  Password :: string()) -> ok | {error, Reason :: string()}.
 
---call wm_basic_auth:is_authorized/3 from webmachine:is_authorized/2
+#### Call wm_basic_auth:is_authorized/3 from webmachine:is_authorized/2
 
 	is_authorized(ReqData, State=#state{realm=Realm}) ->
 	  Response = wm_basic_auth:is_authorized(ReqData, Realm, fun ?MODULE:my_auth_fun/3),
 	  {Response, ReqData, State}.
 
 
--- enable TLS/SSL
+#### Enable TLS/SSL
+
+This step is optional, but strongly recommended.
 
 	WebConfig = [
 	             {ip, Ip},
