@@ -20,14 +20,11 @@ is_authorized_response(_, Realm) -> challenge(Realm).
 is_authorized(ReqData, Realm, PasswordFun) ->
 	case wrq:get_req_header("Authorization", ReqData) of
 		undefined -> challenge(Realm);
-		AuthData ->
-			case AuthData of
-        		"Basic " ++ EncodedParams ->
-					case parse_params(EncodedParams) of
-						[Username, Password] ->
-							is_authorized_response(PasswordFun(Realm, Username, Password), Realm);
-						_ -> challenge(Realm)
-					end;
+		"Basic " ++ EncodedParams ->
+			case parse_params(EncodedParams) of
+				[Username, Password] ->
+					is_authorized_response(PasswordFun(Realm, Username, Password), Realm);
 				_ -> challenge(Realm)
-			end
+			end;
+		_ -> challenge(Realm)
 	end.
