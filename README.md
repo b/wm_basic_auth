@@ -20,8 +20,8 @@ this specification:
 #### Call wm_basic_auth:is_authorized/3 from webmachine:is_authorized/2
 
 	is_authorized(ReqData, State=#state{realm=Realm}) ->
-	  Response = wm_basic_auth:is_authorized(ReqData, Realm, fun ?MODULE:my_auth_fun/3),
-	  {Response, ReqData, State}.
+	    Response = wm_basic_auth:is_authorized(ReqData, Realm, fun ?MODULE:my_auth_fun/3),
+	    {Response, ReqData, State}.
 
 
 #### Enable TLS/SSL
@@ -50,8 +50,8 @@ This step is optional, but strongly recommended.
 	init([]) -> {ok, #state{realm="testrealm@b3k.us"}}.
 
 	is_authorized(ReqData, State=#state{realm=Realm}) ->
-	  Response = wm_basic_auth:is_authorized(ReqData, Realm, fun ?MODULE:authorize/3),
-	  {Response, ReqData, State}.
+	    Response = wm_basic_auth:is_authorized(ReqData, Realm, fun ?MODULE:authorize/3),
+	    {Response, ReqData, State}.
 
 	to_html(ReqData, State) ->
 	    {"<html><body>Hello, new world</body></html>", ReqData, State}.
