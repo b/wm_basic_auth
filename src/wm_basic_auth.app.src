@@ -1,0 +1,8 @@
+{application, wm_basic_auth,
+ [
+  {description, ""},
+  {vsn, git},
+  {registered, []},
+  {applications, []},
+  {env, []}
+ ]}.
