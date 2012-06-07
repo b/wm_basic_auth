@@ -69,26 +69,46 @@ probably not what you want for production.
 Add the example resource to your webmachine app, compile, and start it up.  You can test
 authentication easily using curl:
 
-	$ curl -v --user foo:bar http://localhost:8000/
-	* About to connect() to localhost port 8000 (#0)
+	$ curl -v --user foo:bar -k https://localhost:8443/
+	* About to connect() to localhost port 8443 (#0)
 	*   Trying ::1... Connection refused
 	*   Trying 127.0.0.1... connected
-	* Connected to localhost (127.0.0.1) port 8000 (#0)
+	* Connected to localhost (127.0.0.1) port 8443 (#0)
+	* SSLv3, TLS handshake, Client hello (1):
+	* SSLv3, TLS handshake, Server hello (2):
+	* SSLv3, TLS handshake, CERT (11):
+	* SSLv3, TLS handshake, Server key exchange (12):
+	* SSLv3, TLS handshake, Server finished (14):
+	* SSLv3, TLS handshake, Client key exchange (16):
+	* SSLv3, TLS change cipher, Client hello (1):
+	* SSLv3, TLS handshake, Finished (20):
+	* SSLv3, TLS change cipher, Client hello (1):
+	* SSLv3, TLS handshake, Finished (20):
+	* SSL connection using DHE-RSA-AES256-SHA
+	* Server certificate:
+	* 	 subject: C=US; ST=Washington; L=Seattle; O=b3k; CN=localhost; emailAddress=b@b3k.us
+	* 	 start date: 2012-05-09 19:58:27 GMT
+	* 	 expire date: 2013-05-09 19:58:27 GMT
+	* 	 common name: localhost
+	* 	 issuer: C=US; ST=Washington; L=Seattle; O=b3k; CN=localhost; emailAddress=b@b3k.us
+	* 	 SSL certificate verify result: self signed certificate (18), continuing anyway.
 	* Server auth using Basic with user 'foo'
 	> GET / HTTP/1.1
 	> Authorization: Basic Zm9vOmJhcg==
 	> User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
-	> Host: localhost:8000
+	> Host: localhost:8443
 	> Accept: */*
 	> 
 	< HTTP/1.1 200 OK
 	< Server: MochiWeb/1.1 WebMachine/1.9.0 (someone had painted it blue)
-	< Date: Wed, 06 Jun 2012 21:28:57 GMT
+	< Date: Thu, 07 Jun 2012 07:17:57 GMT
 	< Content-Type: text/html
 	< Content-Length: 42
 	< 
 	* Connection #0 to host localhost left intact
 	* Closing connection #0
+	* SSLv3, TLS alert, Client hello (1):
+	<html><body>Hello, new world</body></html>
 
 ### Blame
 
