@@ -1,7 +1,8 @@
 %% @author Benjamin Black <b@b3k.us>
 %% @copyright 2012 Benjamin Black.
 
-%% @doc wm_basic_auth implementation for Webmachine
+%% @doc wm_basic_auth - RFC 2617 HTTP Basic auth implementation for Webmachine
+%%                      http://tools.ietf.org/html/rfc2617
 
 -module(wm_basic_auth).
 -author('Benjamin Black <b@b3k.us>').
