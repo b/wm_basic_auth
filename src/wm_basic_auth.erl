@@ -6,7 +6,7 @@
 
 -module(wm_basic_auth).
 -author('Benjamin Black <b@b3k.us>').
--export([is_authorized/3]).
+-export([is_authorized/3, always_true_auth/3, always_false_auth/3]).
 
 challenge(Realm) -> "Basic realm=" ++ "\"" ++ Realm ++ "\"".
 
@@ -28,3 +28,7 @@ is_authorized(ReqData, Realm, PasswordFun) ->
 			end;
 		_ -> challenge(Realm)
 	end.
+
+always_true_auth(_, _, _) -> true.
+
+always_false_auth(_, _, _) -> false.
